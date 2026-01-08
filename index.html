@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<meta charset="utf-8">
+<title>draft</title>
+
+<textarea id="t" rows="6" style="width:100%"></textarea>
+<br>
+<button onclick="send()">save</button>
+<button onclick="load()">load</button>
+
+<script>
+const API = "https://draft-api.username.workers.dev";
+
+function send() {
+  fetch(API, {
+    method: "POST",
+    body: document.getElementById("t").value
+  });
+}
+
+function load() {
+  fetch(API)
+    .then(r => r.text())
+    .then(t => document.getElementById("t").value = t);
+}
+</script>
+</html>
